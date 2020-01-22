@@ -1,0 +1,59 @@
+# https://docs.docker.com/compose/
+# https://docs.docker.com/compose/compose-file/
+
+version: '3'
+
+services:
+
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile-php
+    expose:
+      - 80
+    ports:
+      - "80:80"
+    links:
+      - db
+    volumes:
+      - "./:/var/www/html"
+
+    hostname: test
+    domainname: sketchings.com
+
+    restart: unless-stopped
+    privileged: true
+    stdin_open: false
+    tty: false
+
+    environment:
+      DB_SERVER: "db"
+      DB_NAME: "env-test"
+      DB_USERNAME: "env"
+      DB_PASSWORD: "password"
+      CONFIG_ENV: "development"
+      S3_BUCKET: "docker bucket"
+
+  db:
+    image: mysql:5.7
+    expose:
+      - 3306
+    ports:
+      - "127.0.0.1:3305:3306"
+    volumes:
+      - "$HOME/docker-data/mysql-env:/var/lib/mysql"
+
+    hostname: db
+    domainname: ludev.team
+
+    restart: unless-stopped
+    privileged: false
+    stdin_open: false
+    tty: false
+
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_USER: "env"
+      MYSQL_PASSWORD: "password"
+      MYSQL_DATABASE: "env-test"
+    
