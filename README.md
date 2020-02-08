@@ -8,10 +8,11 @@ Example of using environmental variables
 ## Installation
 
 From a terminal
-1. `git clone https://github.com/sketchings/example-env.git`
+1. `git clone https://github.com/sketchings/example-env.git` (or use ssh)
 2. `cd example-env`
 3. `docker run --rm -v $(pwd):/app composer install`
 4. `docker-compose up`
+5. Rename `example.env` to `.env`
 
 ### To set up the database for the first time: 
 In a new terminal
