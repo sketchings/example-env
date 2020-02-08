@@ -8,7 +8,7 @@ Example of using environmental variables
 ## Installation
 
 From the terminal
-1. `get clone https://github.com/sketchings/example-env.git`
+1. `git clone https://github.com/sketchings/example-env.git`
 2. `cd example-env`
 3. `docker run --rm -v $(pwd):/app composer install`
 4. `docker-compose up`
