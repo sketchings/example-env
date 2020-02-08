@@ -39,12 +39,12 @@ services:
     expose:
       - 3306
     ports:
-      - "127.0.0.1:3305:3306"
+      - "3306"
     volumes:
       - "$HOME/docker-data/mysql-env:/var/lib/mysql"
 
     hostname: db
-    domainname: ludev.team
+    domainname: sketchings.com
 
     restart: unless-stopped
     privileged: false
